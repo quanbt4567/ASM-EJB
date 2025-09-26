@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" 
+             xmlns="https://jakarta.ee/xml/ns/persistence" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence 
+                                 https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+  
+  <persistence-unit name="semiconductor-pu" transaction-type="JTA">
+    <description>Semiconductor Inventory Management System Persistence Unit</description>
+    
+    <!-- Data Source -->
+    <jta-data-source>jdbc/semiconductorDB</jta-data-source>
+    
+    <!-- Entity Classes -->
+    <class>entity.Components</class>
+    <class>entity.Suppliers</class>
+    <class>entity.Users</class>
+    <class>entity.Transactions</class>
+    <class>entity.ReorderRequests</class>
+    <class>entity.StockAlerts</class>
+    
+    <!-- Include unlisted classes for auto-discovery -->
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    
+    <!-- Shared Cache Mode -->
+    <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+    
+    <!-- Validation Mode -->
+    <validation-mode>AUTO</validation-mode>
+    
+    <!-- Properties -->
+    <properties>
+      <!-- Database Schema Generation -->
+      <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+      <property name="jakarta.persistence.schema-generation.create-source" value="metadata"/>
+      <property name="jakarta.persistence.schema-generation.drop-source" value="metadata"/>
+      
+      <!-- SQL Script Generation -->
+      <property name="jakarta.persistence.schema-generation.scripts.action" value="drop-and-create"/>
+      <property name="jakarta.persistence.schema-generation.scripts.create-target" value="create-schema.sql"/>
+      <property name="jakarta.persistence.schema-generation.scripts.drop-target" value="drop-schema.sql"/>
+      
+      <!-- Logging -->
+      <property name="eclipselink.logging.level" value="INFO"/>
+      <property name="eclipselink.logging.parameters" value="true"/>
+      <property name="eclipselink.logging.timestamp" value="true"/>
+      <property name="eclipselink.logging.session" value="true"/>
+      <property name="eclipselink.logging.thread" value="true"/>
+      
+      <!-- Performance -->
+      <property name="eclipselink.cache.shared.default" value="true"/>
+      <property name="eclipselink.cache.coordination.protocol" value="rmi"/>
+      <property name="eclipselink.connection-pool.default.initial" value="5"/>
+      <property name="eclipselink.connection-pool.default.min" value="5"/>
+      <property name="eclipselink.connection-pool.default.max" value="20"/>
+      
+      <!-- SQL Dialect -->
+      <property name="eclipselink.target-database" value="SQLServer"/>
+      
+      <!-- Optimistic Locking -->
+      <property name="eclipselink.optimistic-lock.exception" value="true"/>
+      
+      <!-- Batch Writing -->
+      <property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
+      <property name="eclipselink.jdbc.batch-writing.size" value="100"/>
+      
+      <!-- Query Cache -->
+      <property name="eclipselink.query-results-cache" value="true"/>
+      <property name="eclipselink.query-results-cache.size" value="1000"/>
+      
+      <!-- DDL Generation for Development -->
+      <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+      <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+      
+      <!-- Weaving -->
+      <property name="eclipselink.weaving" value="static"/>
+      
+      <!-- Temporal Types -->
+      <property name="eclipselink.temporal.mutable" value="true"/>
+    </properties>
+  </persistence-unit>
+  
+</persistence>

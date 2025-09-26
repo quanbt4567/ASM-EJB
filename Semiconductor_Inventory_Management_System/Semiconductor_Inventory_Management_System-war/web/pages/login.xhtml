@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <f:facet name="first">
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="description" content="Login - Semiconductor Inventory Management System"/>
+    </f:facet>
+
+    <title>Login - Semiconductor Inventory Management System</title>
+
+    <!-- Bootstrap CSS -->
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <!-- Font Awesome CSS -->
+    <h:outputStylesheet library="css" name="fontawesome.min.css"/>
+    <!-- Custom CSS -->
+    <h:outputStylesheet library="css" name="custom.css"/>
+    
+    <!-- Custom login styles -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .brand-logo {
+            width: 80px;
+            height: 80px;
+            background: #007bff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .form-floating > label {
+            color: #6c757d;
+        }
+        
+        .btn-login {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            border: none;
+            padding: 12px;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+        }
+        
+        .login-footer {
+            background: rgba(255, 255, 255, 0.1);
+            margin: -1.5rem -1.5rem 0;
+            padding: 1rem 1.5rem;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <!-- Floating background shapes -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="container-fluid login-container">
+        <div class="row justify-content-center w-100">
+            <div class="col-md-6 col-lg-4">
+                <div class="card login-card border-0">
+                    <div class="card-body p-4">
+                        <!-- Brand -->
+                        <div class="text-center mb-4">
+                            <div class="brand-logo">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <h3 class="fw-bold text-dark mb-1">Welcome Back</h3>
+                            <p class="text-muted">Sign in to your account</p>
+                        </div>
+
+                        <!-- Messages -->
+                        <h:messages globalOnly="true" layout="table" 
+                                   errorClass="alert alert-danger alert-dismissible fade show"
+                                   infoClass="alert alert-info alert-dismissible fade show"
+                                   warnClass="alert alert-warning alert-dismissible fade show"
+                                   rendered="#{facesContext.messageList.size() > 0}">
+                            <f:facet name="header">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </f:facet>
+                        </h:messages>
+
+                        <!-- Login Form -->
+                        <h:form id="loginForm" prependId="false">
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <h:inputText id="username" 
+                                               value="#{authController.username}"
+                                               styleClass="form-control"
+                                               pt:placeholder="Enter your username"
+                                               required="true"
+                                               requiredMessage="Username is required"
+                                               pt:autocomplete="username">
+                                        <f:validateLength minimum="3" maximum="50"/>
+                                    </h:inputText>
+                                    <label for="username">
+                                        <i class="fas fa-user me-2"></i>Username
+                                    </label>
+                                </div>
+                                <h:message for="username" styleClass="text-danger small"/>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <h:inputSecret id="password" 
+                                                 value="#{authController.password}"
+                                                 styleClass="form-control"
+                                                 pt:placeholder="Enter your password"
+                                                 required="true"
+                                                 requiredMessage="Password is required"
+                                                 pt:autocomplete="current-password">
+                                        <f:validateLength minimum="6"/>
+                                    </h:inputSecret>
+                                    <label for="password">
+                                        <i class="fas fa-lock me-2"></i>Password
+                                    </label>
+                                </div>
+                                <h:message for="password" styleClass="text-danger small"/>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <h:selectBooleanCheckbox id="rememberMe" 
+                                                           value="#{authController.rememberMe}"
+                                                           styleClass="form-check-input"/>
+                                    <label class="form-check-label" for="rememberMe">
+                                        Remember me
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="d-grid mb-3">
+                                <h:commandButton action="#{authController.login}" 
+                                               value="Sign In"
+                                               styleClass="btn btn-primary btn-lg btn-login">
+                                    <f:ajax execute="@form" render="@form :messages"/>
+                                </h:commandButton>
+                            </div>
+                        </h:form>
+
+                        <!-- Demo accounts info -->
+                        <div class="demo-accounts mt-4">
+                            <h6 class="text-muted mb-2">Demo Accounts:</h6>
+                            <div class="row g-2">
+                                <div class="col-12">
+                                    <div class="card bg-light border-0">
+                                        <div class="card-body p-2">
+                                            <small class="d-block"><strong>Admin:</strong> admin / password123</small>
+                                            <small class="d-block"><strong>Manager:</strong> manager / password123</small>
+                                            <small class="d-block"><strong>Employee:</strong> employee / password123</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="login-footer text-center">
+                        <small class="text-muted">
+                            © 2025 Semiconductor Inventory Management System
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <h:outputScript library="js" name="bootstrap.bundle.min.js"/>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Focus on username field
+            document.getElementById('username').focus();
+            
+            // Handle form submission loading state
+            const form = document.getElementById('loginForm');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            
+            form.addEventListener('submit', function() {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Signing In...';
+                
+                setTimeout(function() {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Sign In';
+                }, 3000);
+            });
+            
+            // Auto-dismiss alerts
+            setTimeout(function() {
+                var alerts = document.querySelectorAll('.alert');
+                alerts.forEach(function(alert) {
+                    var bsAlert = new bootstrap.Alert(alert);
+                    if (bsAlert) {
+                        bsAlert.close();
+                    }
+                });
+            }, 5000);
+            
+            // Add ripple effect to login button
+            const loginBtn = document.querySelector('.btn-login');
+            loginBtn.addEventListener('click', function(e) {
+                let ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                
+                let x = e.clientX - e.target.offsetLeft;
+                let y = e.clientY - e.target.offsetTop;
+                
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    </script>
+    
+    <style>
+        .btn-login {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</h:body>
+</html>

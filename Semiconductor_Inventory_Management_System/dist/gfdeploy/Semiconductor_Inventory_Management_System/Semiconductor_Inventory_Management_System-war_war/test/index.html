@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Semiconductor Inventory - Test Suite (Java Ant)</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            background: rgba(255,255,255,0.95); 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            color: #333;
+        }
+        .test-button { 
+            background: linear-gradient(45deg, #007bff, #0056b3); 
+            color: white; 
+            padding: 15px 30px; 
+            margin: 10px; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            display: inline-block; 
+            box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+            transition: all 0.3s ease;
+        }
+        .test-button:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+        }
+        .danger-button {
+            background: linear-gradient(45deg, #dc3545, #c82333);
+            box-shadow: 0 4px 15px rgba(220,53,69,0.3);
+        }
+        .warning-button {
+            background: linear-gradient(45deg, #ffc107, #e0a800);
+            color: black;
+            box-shadow: 0 4px 15px rgba(255,193,7,0.3);
+        }
+        .success { color: #28a745; }
+        .warning { color: #ffc107; }
+        .error { color: #dc3545; }
+        .info { color: #17a2b8; }
+        .highlight { 
+            background: rgba(0,123,255,0.1); 
+            padding: 20px; 
+            border-radius: 10px; 
+            margin: 20px 0;
+            border-left: 4px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Semiconductor Inventory Test Suite</h1>
+        <h2>🏗️ Java Ant Project Structure</h2>
+        <p>Comprehensive testing for EJB services and Message-Driven Bean in Ant-based Java EE application</p>
+        
+        <div class="highlight">
+            <h3>📁 Project Structure:</h3>
+            <ul>
+                <li><strong>src/java/</strong> - Source code (Entity, EJB, MDB, Servlet, Test)</li>
+                <li><strong>web/</strong> - Web resources (HTML, JSP, CSS)</li>
+                <li><strong>web/WEB-INF/</strong> - Configuration files</li>
+                <li><strong>build/</strong> - Compiled classes (generated)</li>
+            </ul>
+        </div>
+        
+        <h2>🔬 Available Tests:</h2>
+        
+        <div style="margin: 20px 0;">
+            <a href="../test-mdb" class="test-button">
+                🔔 MDB Test Suite
+            </a>
+            <p>Test Message-Driven Bean functionality with stock alerts</p>
+        </div>
+        
+        <div style="margin: 20px 0;">
+            <a href="../test-mdb?action=trigger-alerts" class="test-button warning-button">
+                ⚠️ Trigger Normal Alerts
+            </a>
+            <p>Trigger LOW_STOCK and standard alerts for testing</p>
+        </div>
+        
+        <div style="margin: 20px 0;">
+            <a href="../test-mdb?action=trigger-critical" class="test-button danger-button">
+                🚨 Trigger Critical Alerts
+            </a>
+            <p>Trigger OUT_OF_STOCK and critical alerts for testing</p>
+        </div>
+        
+        <h2>📊 System Information:</h2>
+        <div>
+            <a href="../admin/dashboard" class="test-button">
+                📈 Admin Dashboard
+            </a>
+            <p>View current inventory status and system health</p>
+        </div>
+        
+        <h2>📋 Test Instructions:</h2>
+        <ol>
+            <li><strong>Build Project:</strong> Use Ant build script to compile</li>
+            <li><strong>Deploy:</strong> Deploy to GlassFish server</li>
+            <li><strong>Automatic Tests:</strong> Will run on startup (check server logs)</li>
+            <li><strong>Interactive Tests:</strong> Use buttons above for manual testing</li>
+            <li><strong>Monitor:</strong> Check database changes in SQL Server Management Studio</li>
+        </ol>
+        
+        <div class="highlight">
+            <h3>🚀 Deployment URLs:</h3>
+            <p><strong>Local Application:</strong> http://localhost:8080/chiplap/</p>
+            <p><strong>Test Suite:</strong> http://localhost:8080/chiplap/test/</p>
+            <p><strong>MDB Tests:</strong> http://localhost:8080/chiplap/test-mdb</p>
+        </div>
+        
+        <h2>🔧 Ant Build Commands:</h2>
+        <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; color: #333; overflow-x: auto;">
+# Clean and build
+ant clean compile
+
+# Create WAR file  
+ant war
+
+# Deploy to GlassFish
+ant deploy
+
+# Run tests
+ant test
+        </pre>
+        
+        <div style="background: #d4edda; padding: 15px; border-radius: 5px; margin-top: 20px; color: #155724;">
+            <h3>✅ Expected Test Results:</h3>
+            <ul>
+                <li>EJB CRUD operations working correctly</li>
+                <li>Stock level monitoring functional</li>
+                <li>MDB processing alerts asynchronously</li>
+                <li>Database integration successful</li>
+                <li>Transaction processing with stock updates</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

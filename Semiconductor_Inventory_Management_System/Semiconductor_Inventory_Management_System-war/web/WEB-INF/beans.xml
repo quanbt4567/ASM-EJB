@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="https://jakarta.ee/xml/ns/jakartaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
+                           https://jakarta.ee/xml/ns/jakartaee/beans_4_0.xsd"
+       version="4.0" bean-discovery-mode="all">
+
+    <!-- =============== CDI CONFIGURATION =============== -->
+    
+    <!-- Enable CDI for all classes in the application -->
+    <!-- bean-discovery-mode="all" means all classes are eligible for injection -->
+    
+    <!-- =============== INTERCEPTORS =============== -->
+    
+    <interceptors>
+        <!-- Add custom interceptors here if needed -->
+        <!-- Example: <class>com.example.LoggingInterceptor</class> -->
+    </interceptors>
+    
+    <!-- =============== DECORATORS =============== -->
+    
+    <decorators>
+        <!-- Add decorators here if needed -->
+        <!-- Example: <class>com.example.LoggingDecorator</class> -->
+    </decorators>
+    
+    <!-- =============== ALTERNATIVES =============== -->
+    
+    <alternatives>
+        <!-- Add alternative implementations here if needed -->
+        <!-- Example: <class>com.example.MockService</class> -->
+    </alternatives>
+
+</beans>

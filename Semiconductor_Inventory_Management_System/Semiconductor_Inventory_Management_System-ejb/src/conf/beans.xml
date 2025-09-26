@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="https://jakarta.ee/xml/ns/jakartaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
+                           https://jakarta.ee/xml/ns/jakartaee/beans_4_0.xsd"
+       version="4.0" bean-discovery-mode="all">
+
+    <!-- =============== CDI CONFIGURATION FOR EJB MODULE =============== -->
+    
+    <!-- Enable CDI for all classes in the EJB module -->
+    <!-- bean-discovery-mode="all" means all classes are eligible for injection -->
+    
+    <!-- =============== INTERCEPTORS =============== -->
+    
+    <interceptors>
+        <!-- Add custom interceptors here if needed -->
+    </interceptors>
+    
+    <!-- =============== DECORATORS =============== -->
+    
+    <decorators>
+        <!-- Add custom decorators here if needed -->
+    </decorators>
+    
+    <!-- =============== ALTERNATIVES =============== -->
+    
+    <alternatives>
+        <!-- Add alternative implementations here if needed -->
+    </alternatives>
+
+</beans>

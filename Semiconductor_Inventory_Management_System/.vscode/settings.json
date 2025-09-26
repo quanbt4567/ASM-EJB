@@ -1,0 +1,16 @@
+{
+  "java.project.referencedLibraries": [
+    "C:/Users/MINH QUAN/glassfish7/glassfish/modules/*.jar",
+    "C:/Users/MINH QUAN/glassfish7/glassfish/lib/*.jar",
+    "C:/Users/MINH QUAN/glassfish7/glassfish/domains/domain1/lib/*.jar",
+    "C:/Users/MINH QUAN/glassfish7/glassfish/domains/domain1/lib/ext/*.jar",
+    "C:/Users/MINH QUAN/glassfish7/glassfish/modules/endorsed/*.jar",
+    "C:/Users/MINH QUAN/glassfish7/glassfish/lib/endorsed/*.jar",
+    "C:/Users/MINH QUAN/glassfish7/glassfish/modules/jakarta*.jar",
+    "${workspaceFolder}/lib/*.jar"
+  ],
+  "files.exclude": {
+    "**/dist/**": true,
+    "**/build/**": true
+  }
+}

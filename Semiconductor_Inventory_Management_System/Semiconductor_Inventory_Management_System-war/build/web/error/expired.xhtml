@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+    
+    <ui:define name="title">Session Expired</ui:define>
+    
+    <ui:define name="content">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="text-center">
+                        <div class="error-icon mb-4">
+                            <i class="fas fa-clock fa-5x text-warning"></i>
+                        </div>
+                        
+                        <h1 class="display-4 fw-bold text-warning">Session Expired</h1>
+                        <h2 class="mb-4">Your session has timed out</h2>
+                        <p class="lead mb-4">
+                            For security reasons, your session has expired. Please log in again to continue.
+                        </p>
+                        
+                        <div class="alert alert-warning" role="alert">
+                            <h4 class="alert-heading">Security Notice</h4>
+                            <p class="mb-0">
+                                Sessions automatically expire after 30 minutes of inactivity to protect your data.
+                                Any unsaved changes may have been lost.
+                            </p>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <h:form>
+                                <h:commandButton value="Login Again" 
+                                               action="#{authController.logout()}"
+                                               styleClass="btn btn-primary btn-lg me-md-2" />
+                                <h:button value="Go to Home" 
+                                        outcome="/login"
+                                        styleClass="btn btn-outline-secondary btn-lg" />
+                            </h:form>
+                        </div>
+                        
+                        <div class="mt-5">
+                            <h:outputText value="Session expired at: " styleClass="text-muted small" />
+                            <h:outputText value="#{facesContext.externalContext.requestHeaderMap['Date']}" 
+                                        styleClass="text-muted small">
+                                <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" />
+                            </h:outputText>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+    
+</ui:composition>
+</html>

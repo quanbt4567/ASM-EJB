@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/pages/template.xhtml">
+    
+    <ui:define name="title">Dashboard - Semiconductor Inventory Management System</ui:define>
+    
+    <ui:define name="pageTitle">
+        <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+    </ui:define>
+    
+    <ui:define name="pageSubtitle">
+        Welcome back! Here's your system overview.
+    </ui:define>
+    
+    <ui:define name="pageActions">
+        <div class="btn-group" role="group">
+            <h:link outcome="/pages/components/create" class="btn btn-primary">
+                <i class="fas fa-plus me-1"></i> Add Component
+            </h:link>
+            <h:link outcome="/pages/transactions/create" class="btn btn-outline-primary">
+                <i class="fas fa-exchange-alt me-1"></i> New Transaction
+            </h:link>
+        </div>
+    </ui:define>
+
+    <ui:define name="content">
+        <!-- Quick Actions -->
+        <div class="row mb-4">
+            <div class="col-lg-6 mb-3">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-white border-0">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-bolt me-2"></i>Quick Actions
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <h:link outcome="/pages/components/list" class="btn btn-outline-primary w-100">
+                                    <i class="fas fa-microchip d-block mb-1"></i>
+                                    <small>Manage Components</small>
+                                </h:link>
+                            </div>
+                            <div class="col-6">
+                                <h:link outcome="/pages/suppliers/list" class="btn btn-outline-success w-100">
+                                    <i class="fas fa-truck d-block mb-1"></i>
+                                    <small>Manage Suppliers</small>
+                                </h:link>
+                            </div>
+                            <div class="col-6">
+                                <h:link outcome="/pages/transactions/list" class="btn btn-outline-info w-100">
+                                    <i class="fas fa-exchange-alt d-block mb-1"></i>
+                                    <small>View Transactions</small>
+                                </h:link>
+                            </div>
+                            <div class="col-6">
+                                <h:link outcome="/pages/reports/inventory" class="btn btn-outline-warning w-100">
+                                    <i class="fas fa-chart-bar d-block mb-1"></i>
+                                    <small>View Reports</small>
+                                </h:link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mb-3">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-white border-0">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-info-circle me-2"></i>System Information
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-between">
+                                    <span>System Status:</span>
+                                    <span class="badge bg-success">Online</span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex justify-content-between">
+                                    <span>Version:</span>
+                                    <span class="text-muted">1.0.0</span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex justify-content-between">
+                                    <span>Database:</span>
+                                    <span class="badge bg-info">Connected</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Welcome Message -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center py-5">
+                        <i class="fas fa-microchip fa-4x text-primary mb-3"></i>
+                        <h2 class="mb-3">Welcome to Semiconductor Inventory Management System</h2>
+                        <p class="lead text-muted mb-4">
+                            Efficiently manage your semiconductor components, suppliers, and transactions all in one place.
+                        </p>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="feature-box">
+                                            <i class="fas fa-box-open fa-2x text-primary mb-2"></i>
+                                            <h6>Inventory Management</h6>
+                                            <small class="text-muted">Track and manage your components</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="feature-box">
+                                            <i class="fas fa-chart-line fa-2x text-success mb-2"></i>
+                                            <h6>Real-time Analytics</h6>
+                                            <small class="text-muted">Monitor stock levels and trends</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="feature-box">
+                                            <i class="fas fa-shield-alt fa-2x text-info mb-2"></i>
+                                            <h6>Secure & Reliable</h6>
+                                            <small class="text-muted">Enterprise-grade security</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>
+</html>

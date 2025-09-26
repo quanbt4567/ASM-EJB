@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/ASM-EJB/Semiconductor_Inventory_Management_System/Semiconductor_Inventory_Management_System-ejb/src/java/entity/Transactions.java</file>
+            <file>file:/D:/ASM-EJB/Semiconductor_Inventory_Management_System/Semiconductor_Inventory_Management_System-ejb/src/java/entity/Components.java</file>
+            <file>file:/D:/ASM-EJB/Semiconductor_Inventory_Management_System/Semiconductor_Inventory_Management_System-ejb/src/java/ejb/TransactionEJB.java</file>
+            <file>file:/D:/ASM-EJB/Semiconductor_Inventory_Management_System/Semiconductor_Inventory_Management_System-ejb/src/java/mdb/StockAlertMDB.java</file>
+            <file>file:/D:/ASM-EJB/Semiconductor_Inventory_Management_System/Semiconductor_Inventory_Management_System-ejb/src/java/ejb/UserEJB.java</file>
+            <file>file:/D:/ASM-EJB/Semiconductor_Inventory_Management_System/Semiconductor_Inventory_Management_System-ejb/src/conf/MANIFEST.MF</file>
+            <file>file:/D:/ASM-EJB/Semiconductor_Inventory_Management_System/Semiconductor_Inventory_Management_System-ejb/src/java/ejb/SupplierEJB.java</file>
+            <file>file:/D:/ASM-EJB/Semiconductor_Inventory_Management_System/Semiconductor_Inventory_Management_System-ejb/src/java/entity/Suppliers.java</file>
+            <file>file:/D:/ASM-EJB/Semiconductor_Inventory_Management_System/Semiconductor_Inventory_Management_System-ejb/src/java/ejb/ComponentEJB.java</file>
+            <file>file:/D:/ASM-EJB/Semiconductor_Inventory_Management_System/Semiconductor_Inventory_Management_System-ejb/src/conf/persistence.xml</file>
+            <file>file:/D:/ASM-EJB/Semiconductor_Inventory_Management_System/Semiconductor_Inventory_Management_System-ejb/src/java/entity/Users.java</file>
+            <file>file:/D:/ASM-EJB/Semiconductor_Inventory_Management_System/Semiconductor_Inventory_Management_System-ejb/src/java/ejb/NotificationService.java</file>
+        </group>
+    </open-files>
+</project-private>

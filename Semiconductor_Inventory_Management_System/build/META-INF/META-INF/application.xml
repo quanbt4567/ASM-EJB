@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="https://jakarta.ee/xml/ns/jakartaee"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
+                                 https://jakarta.ee/xml/ns/jakartaee/application_10.xsd"
+             version="10">
+
+    <display-name>Semiconductor Inventory Management System</display-name>
+
+    <!-- =============== APPLICATION MODULES =============== -->
+    
+    <!-- EJB Module -->
+    <module>
+        <ejb>Semiconductor_Inventory_Management_System-ejb.jar</ejb>
+    </module>
+    
+    <!-- Web Module -->
+    <module>
+        <web>
+            <web-uri>Semiconductor_Inventory_Management_System-war.war</web-uri>
+            <context-root>/semiconductor</context-root>
+        </web>
+    </module>
+
+    <!-- =============== SECURITY ROLES =============== -->
+    
+    <security-role>
+        <description>System Administrator with full access</description>
+        <role-name>ADMIN</role-name>
+    </security-role>
+    
+    <security-role>
+        <description>Inventory Manager with management permissions</description>
+        <role-name>MANAGER</role-name>
+    </security-role>
+    
+    <security-role>
+        <description>Regular user with limited access</description>
+        <role-name>USER</role-name>
+    </security-role>
+
+    <!-- =============== LIBRARY DIRECTORY =============== -->
+    
+    <library-directory>lib</library-directory>
+</application>

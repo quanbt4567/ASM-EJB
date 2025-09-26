@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jakarta.ee/jsf/html"
+    xmlns:f="http://xmlns.jakarta.ee/jsf/core">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <title>Quản lý Linh kiện Bán dẫn</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #2c3e50; }
+        .container { max-width: 1000px; margin: auto; background: #fff; padding: 20px; border-radius: 8px;
+                     box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .back { display: inline-block; margin-bottom: 20px; padding: 10px 15px; background-color: #95a5a6; 
+                color: white; text-decoration: none; border-radius: 4px; }
+        .back:hover { background-color: #7f8c8d; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        table th, table td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        table th { background-color: #3498db; color: white; }
+        table tr:nth-child(even) { background-color: #f2f2f2; }
+        table tr:hover { background-color: #eaf2f8; }
+        .form-section { margin-top: 30px; }
+        .form-section h2 { color: #2c3e50; margin-bottom: 15px; }
+        .form-grid { display: grid; grid-template-columns: 150px 1fr; gap: 10px; margin-bottom: 15px; }
+        input[type="text"], input[type="number"] { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        .btn { background-color: #27ae60; color: white; padding: 10px 18px; border: none; border-radius: 4px; cursor: pointer; }
+        .btn:hover { background-color: #219150; }
+        .btn-danger { background-color: #e74c3c; }
+        .btn-danger:hover { background-color: #c0392b; }
+        .btn-warning { background-color: #f39c12; }
+        .btn-warning:hover { background-color: #d68910; }
+    </style>
+</h:head>
+
+<h:body>
+    <h:link outcome="index" value="← Quay lại Trang chính" styleClass="back" />
+    <div class="container">
+        <h1>Danh sách Linh kiện</h1>
+        <h:outputText value="Tổng số linh kiện: #{not empty componentBean.components ? componentBean.components.size() : 0}" />
+
+        <!-- Bảng hiển thị linh kiện -->
+        <h:dataTable value="#{componentBean.components}" var="c" styleClass="table">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{c.componentId}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Tên</f:facet>
+                <h:outputText value="#{c.name}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Loại</f:facet>
+                <h:outputText value="#{c.category}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Số lượng</f:facet>
+                <h:outputText value="#{c.quantity}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Mức tái đặt hàng</f:facet>
+                <h:outputText value="#{c.reorderLevel}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Hành động</f:facet>
+                <h:form>
+                    <h:commandButton value="Xóa" action="#{componentBean.deleteComponent(c.componentId)}"
+                                     styleClass="btn btn-danger" />
+                </h:form>
+                <h:form>
+                    <h:commandButton value="Chọn" action="#{componentBean.setSelectedComponent(c)}"
+                                     styleClass="btn btn-warning" />
+                </h:form>
+            </h:column>
+        </h:dataTable>
+
+        <!-- Form thêm mới linh kiện -->
+        <div class="form-section">
+            <h2>Thêm Linh kiện mới</h2>
+            <h:form>
+                <div class="form-grid">
+                    <h:outputLabel value="Tên:" />
+                    <h:inputText value="#{componentBean.newComponent.name}" />
+
+                    <h:outputLabel value="Loại:" />
+                    <h:inputText value="#{componentBean.newComponent.category}" />
+
+                    <h:outputLabel value="Số lượng:" />
+                    <h:inputText value="#{componentBean.newComponent.quantity}" />
+
+                    <h:outputLabel value="Mức tái đặt hàng:" />
+                    <h:inputText value="#{componentBean.newComponent.reorderLevel}" />
+                </div>
+                <h:commandButton value="Thêm Linh kiện" action="#{componentBean.createNewComponent}" styleClass="btn" />
+            </h:form>
+        </div>
+
+        <!-- Form cập nhật linh kiện -->
+        <div class="form-section">
+            <h2>Cập nhật Linh kiện</h2>
+            <h:form>
+                <div class="form-grid">
+                    <h:outputLabel value="ID:" />
+                    <h:inputText value="#{componentBean.selectedComponent.componentId}" readonly="true" />
+
+                    <h:outputLabel value="Tên:" />
+                    <h:inputText value="#{componentBean.selectedComponent.name}" />
+
+                    <h:outputLabel value="Loại:" />
+                    <h:inputText value="#{componentBean.selectedComponent.category}" />
+
+                    <h:outputLabel value="Số lượng:" />
+                    <h:inputText value="#{componentBean.selectedComponent.quantity}" />
+
+                    <h:outputLabel value="Mức tái đặt hàng:" />
+                    <h:inputText value="#{componentBean.selectedComponent.reorderLevel}" />
+                </div>
+                <h:commandButton value="Cập nhật" action="#{componentBean.updateComponent}" styleClass="btn" />
+            </h:form>
+        </div>
+    </div>
+</h:body>
+</html>

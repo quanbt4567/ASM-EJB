@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="4.0"
+              xmlns="https://jakarta.ee/xml/ns/jakartaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
+                                  https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd">
+
+    <!-- =============== APPLICATION CONFIGURATION =============== -->
+    
+    <application>
+        <default-render-kit-id>HTML_BASIC</default-render-kit-id>
+        <message-bundle>messages</message-bundle>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>en</supported-locale>
+            <supported-locale>vi</supported-locale>
+        </locale-config>
+        
+        <!-- Resource Bundle -->
+        <resource-bundle>
+            <base-name>messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+        
+        <!-- Application configuration -->
+        <view-handler>jakarta.faces.application.ViewHandler</view-handler>
+    </application>
+
+    <!-- =============== NAVIGATION RULES =============== -->
+    
+    <!-- Login Navigation -->
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>login_success</from-outcome>
+            <to-view-id>/pages/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>login_failed</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- Dashboard Navigation -->
+    <navigation-rule>
+        <from-view-id>/pages/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>components</from-outcome>
+            <to-view-id>/pages/components.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>suppliers</from-outcome>
+            <to-view-id>/pages/suppliers.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>transactions</from-outcome>
+            <to-view-id>/pages/transactions.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>users</from-outcome>
+            <to-view-id>/pages/users.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>reports</from-outcome>
+            <to-view-id>/pages/reports.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- Logout Navigation -->
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- Global Navigation Rules -->
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/pages/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>access_denied</from-outcome>
+            <to-view-id>/error/403.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/error/500.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <!-- =============== MANAGED BEANS =============== -->
+    <!-- Deprecated in JSF 4 when using CDI @Named; controllers are CDI beans already -->
+
+    <!-- =============== CONVERTERS =============== -->
+    
+    <!-- Date Converter -->
+    <converter>
+        <converter-id>dateConverter</converter-id>
+        <converter-class>javax.faces.convert.DateTimeConverter</converter-class>
+    </converter>
+    
+    <!-- Number Converter -->
+    <converter>
+        <converter-id>numberConverter</converter-id>
+        <converter-class>javax.faces.convert.NumberConverter</converter-class>
+    </converter>
+
+    <!-- =============== VALIDATORS =============== -->
+    
+    <!-- Email Validator -->
+    <validator>
+        <validator-id>emailValidator</validator-id>
+        <validator-class>javax.faces.validator.RegexValidator</validator-class>
+    </validator>
+    
+    <!-- Phone Validator -->
+    <validator>
+        <validator-id>phoneValidator</validator-id>
+        <validator-class>javax.faces.validator.RegexValidator</validator-class>
+    </validator>
+
+    <!-- =============== LIFECYCLE =============== -->
+    
+    <lifecycle>
+        <phase-listener>javax.faces.event.PhaseListener</phase-listener>
+    </lifecycle>
+
+    <!-- =============== FACTORY CONFIGURATION =============== -->
+    
+    <factory>
+        <application-factory>javax.faces.application.ApplicationFactory</application-factory>
+        <faces-context-factory>javax.faces.context.FacesContextFactory</faces-context-factory>
+        <lifecycle-factory>javax.faces.lifecycle.LifecycleFactory</lifecycle-factory>
+        <render-kit-factory>javax.faces.render.RenderKitFactory</render-kit-factory>
+    </factory>
+
+    <!-- =============== RENDER KIT =============== -->
+    
+    <render-kit>
+        <render-kit-id>HTML_BASIC</render-kit-id>
+        <render-kit-class>javax.faces.render.RenderKit</render-kit-class>
+    </render-kit>
+
+    <!-- =============== PROTECTED VIEWS =============== -->
+    
+    <protected-views>
+        <url-pattern>/pages/*</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
+    </protected-views>
+
+</faces-config>

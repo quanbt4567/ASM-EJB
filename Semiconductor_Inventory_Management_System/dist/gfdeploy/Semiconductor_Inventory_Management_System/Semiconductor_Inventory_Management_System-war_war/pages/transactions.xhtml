@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jakarta.ee/jsf/html"
+    xmlns:f="http://xmlns.jakarta.ee/jsf/core">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <title>Quản lý Giao dịch</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f9; padding: 20px; }
+        h1 { text-align: center; color: #2c3e50; }
+        .container { max-width: 1000px; margin: auto; background: #fff; padding: 20px;
+                     border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        table th, table td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        table th { background-color: #3498db; color: white; }
+        table tr:nth-child(even) { background-color: #f2f2f2; }
+        table tr:hover { background-color: #eaf2f8; }
+        .form-section { margin-top: 30px; }
+        .form-grid { display: grid; grid-template-columns: 150px 1fr; gap: 10px; margin-bottom: 15px; }
+        select, input[type="number"] { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        .btn { background-color: #27ae60; color: white; padding: 10px 18px; border: none; border-radius: 4px; cursor: pointer; }
+        .btn:hover { background-color: #219150; }
+        .back { display: inline-block; margin-bottom: 15px; color: #3498db; text-decoration: none; }
+    </style>
+</h:head>
+
+<h:body>
+    <h:link outcome="index" value="← Quay lại Trang chính" styleClass="back" />
+    <div class="container">
+        <h1>Danh sách Giao dịch</h1>
+
+        <h:dataTable value="#{transactionBean.transactions}" var="t">
+            <h:column><f:facet name="header">ID</f:facet>#{t.transactionId}</h:column>
+            <h:column><f:facet name="header">Linh kiện</f:facet>#{t.component.name}</h:column>
+            <h:column><f:facet name="header">Nhà cung cấp</f:facet>#{t.supplier.name}</h:column>
+            <h:column><f:facet name="header">Loại</f:facet>#{t.type}</h:column>
+            <h:column><f:facet name="header">Số lượng</f:facet>#{t.quantity}</h:column>
+            <h:column><f:facet name="header">Ngày</f:facet>
+                <h:outputText value="#{t.transactionDate}">
+                    <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+                </h:outputText>
+            </h:column>
+        </h:dataTable>
+
+        <!-- Form thêm mới -->
+        <div class="form-section">
+            <h2>Thêm Giao dịch mới</h2>
+            <h:form>
+                <div class="form-grid">
+                    <h:outputLabel value="Linh kiện:" />
+                    <h:selectOneMenu value="#{transactionBean.componentId}">
+                        <f:selectItems value="#{transactionBean.allComponents}" var="c"
+                                       itemValue="#{c.componentId}" itemLabel="#{c.name}" />
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="Nhà cung cấp:" />
+                    <h:selectOneMenu value="#{transactionBean.supplierId}">
+                        <f:selectItems value="#{transactionBean.allSuppliers}" var="s"
+                                       itemValue="#{s.supplierId}" itemLabel="#{s.name}" />
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="Loại:" />
+                    <h:selectOneMenu value="#{transactionBean.type}">
+                        <f:selectItem itemValue="IMPORT" itemLabel="Nhập kho" />
+                        <f:selectItem itemValue="EXPORT" itemLabel="Xuất kho" />
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="Số lượng:" />
+                    <h:inputText value="#{transactionBean.quantity}" />
+                </div>
+
+                <h:commandButton value="Thêm Giao dịch" action="#{transactionBean.saveTransaction}" styleClass="btn" />
+            </h:form>
+        </div>
+
+    </div>
+</h:body>
+</html>

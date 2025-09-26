@@ -1,0 +1,87 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Ant: clean dist (EAR)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"ant",
+				"clean",
+				"dist"
+			],
+			"group": "build"
+		},
+		{
+			"label": "GF: start domain",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"\"C:\\Users\\MINH QUAN\\glassfish7\\glassfish\\bin\\asadmin.bat\"",
+				"start-domain",
+				"domain1"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "GF: stop domain",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"\"C:\\Users\\MINH QUAN\\glassfish7\\glassfish\\bin\\asadmin.bat\"",
+				"stop-domain",
+				"domain1"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "GF: deploy EAR",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"\"C:\\Users\\MINH QUAN\\glassfish7\\glassfish\\bin\\asadmin.bat\"",
+				"deploy",
+				"--force=true",
+				"dist\\Semiconductor_Inventory_Management_System.ear"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "GF: undeploy EAR",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"\"C:\\Users\\MINH QUAN\\glassfish7\\glassfish\\bin\\asadmin.bat\"",
+				"undeploy",
+				"Semiconductor_Inventory_Management_System"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "Build & Deploy (GF)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"ant",
+				"clean",
+				"dist",
+				"&&",
+				"asadmin",
+				"deploy",
+				"--force=true",
+				"dist\\Semiconductor_Inventory_Management_System.ear"
+			],
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
